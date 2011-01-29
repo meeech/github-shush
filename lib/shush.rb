@@ -21,7 +21,7 @@ a = Mechanize.new { |agent|
   agent.user_agent_alias = 'Mac Safari'
 }
 
-puts "Logging in as #{$github_config[:username]}"
+puts "i am #{$github_config[:username]}"
 a.get(github[:login]) do |page|
   login_result = page.form_with(:action => '/session') do |login_form|
     login_form.login = $github_config[:username]
