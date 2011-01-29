@@ -21,7 +21,7 @@ a = Mechanize.new { |agent|
   agent.user_agent_alias = 'Mac Safari'
 }
 
-puts "i am #{$github_config[:username]}"
+puts "shushing notifications for #{$github_config[:username]}"
 a.get(github[:login]) do |page|
   login_result = page.form_with(:action => '/session') do |login_form|
     login_form.login = $github_config[:username]
@@ -34,8 +34,10 @@ selector = ".unread a.body"
 case ARGV.to_s
 when "delete"
   #set action to delete
+  puts 'deleting unread notifications...'
   action = "delete"
 when "wipe"
+  puts 'delete all notifications...'  
   action = "delete"
   selector = "a.body"
 end
