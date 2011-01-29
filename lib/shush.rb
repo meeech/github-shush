@@ -1,7 +1,20 @@
 require 'rubygems'
 require 'mechanize'
 
-require '~/.github-shush-config.rb'
+CONFIG_FILE = "#{ENV['HOME']}/.github-shush-config.rb"
+
+unless File.exists? CONFIG_FILE
+
+  CONFIG_SAMPLE_FILE = File.dirname(__FILE__)+"/config.sample.rb"
+  FileUtils.mkdir File.dirname(CONFIG_FILE) unless File.exists?(File.dirname(CONFIG_FILE))
+  
+  puts "Creating #{CONFIG_FILE}..." 
+  FileUtils.copy(CONFIG_SAMPLE_FILE, CONFIG_FILE)
+  puts "Edit #{CONFIG_FILE} and add your login info."
+  exit
+end
+
+require CONFIG_FILE
 
 github = {
   :base => 'https://github.com',
@@ -31,14 +44,20 @@ end
 
 action = "get"
 selector = ".unread div.del a"
+
 case ARGV.to_s
+
 when "delete"
   action = "delete"
   puts 'deleting unread notifications...'  
+
 when "wipe"
   action = "delete"
   selector = "div.del a"
-  puts 'delete all notifications...'    
+  puts 'delete all notifications...'
+
+when "init"
+  require 'init'
 end
 
 a.get(github[:notifications]).search(selector).each do |link|
