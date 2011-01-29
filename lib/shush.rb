@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'mechanize'
-require 'simpleconsole'
 
 require '~/.github-shush-config.rb'
 
