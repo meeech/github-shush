@@ -30,21 +30,21 @@ a.get(github[:login]) do |page|
 end
 
 action = "get"
-selector = ".unread a.body"
+selector = ".unread div.del a"
 case ARGV.to_s
 when "delete"
-  #set action to delete
-  puts 'deleting unread notifications...'
   action = "delete"
+  puts 'deleting unread notifications...'  
 when "wipe"
-  puts 'delete all notifications...'  
   action = "delete"
-  selector = "a.body"
+  selector = "div.del a"
+  puts 'delete all notifications...'    
 end
 
 a.get(github[:notifications]).search(selector).each do |link|
   puts "#{action}> #{link.text}"
-  url = github[:base]+link.get_attribute('href')
+  url = github[:base]+link.get_attribute('rel')
+  puts url
   a.send(action, url)
-  sleep 0.5  
+  sleep 0.4 
 end
