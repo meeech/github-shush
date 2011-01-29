@@ -4,6 +4,7 @@ require 'mechanize'
 require '~/.github-shush-config.rb'
 
 github = {
+  :base => 'https://github.com',
   :login => 'https://github.com/login',
   :notifications => "https://github.com/inbox/notifications"
 }
@@ -40,7 +41,7 @@ when "wipe"
 end
 
 a.get(github[:notifications]).search(selector).each do |link|
-  puts "doing  #{link.text}"
-  url = "https://github.com"+link.get_attribute('href')
+  puts "#{action}> #{link.text}"
+  url = github[:base]+link.get_attribute('href')
   a.send(action, url)
 end
