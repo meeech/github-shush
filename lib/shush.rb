@@ -8,15 +8,16 @@ config = {
 }
 
 github = {
-  :login => 'https://github.com/login'
+  :login => 'https://github.com/login',
+  :notification => "https://github.com/inbox/notifications"
 }
 
 # These containers are used for the matching. 
 # we may have some issues ie: when its the same message x2 or whatnot - 
 # github doesnt send enough of identifier to know which notification it is.
 # so, we will only focus on unread messages, and then try to match the title/ text
-message_subject = nil
-message_text = nil
+# message_subject = nil
+# message_text = nil
 
 a = Mechanize.new { |agent|
   agent.user_agent_alias = 'Mac Safari'
@@ -29,15 +30,13 @@ a.get(github[:login]) do |page|
   end.submit
 end
 
-# This will mark the item as 'read' so it doesnt show up in your gh toolbar
-# there should be a way to make this dynamic based on the setting passed in action :/ 
-# i just can't remember the idiom. if someone would be so kind as to demonstrate.
-# a.send("get", "https://github.com/inbox/notifications")
+# either mark as read, or delete
+action = config[:delete] ? "delete" : "get"
 
-a.send("get", "https://github.com/inbox/notifications").search(".unread a.body").each do |link|
-  puts link.get_attribute('href')
+a.get(github[:notifications]).search(".unread a.body").each do |link|
+  url = "https://github.com/"+link.get_attribute('href')
+  a.send(action, url)
 end
-
 
 # a.get(https://github.com/inbox/notifications).search(".unread a.body").each do |link|
 #   puts link.get_attribute('href')
