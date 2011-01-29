@@ -3,9 +3,6 @@ require 'mechanize'
 
 require '~/.github-shush-config.rb'
 
-# either mark as read, or delete
-action = (ARGV.to_s == 'delete') ? "delete" : "get"
-
 github = {
   :login => 'https://github.com/login',
   :notifications => "https://github.com/inbox/notifications"
@@ -31,7 +28,18 @@ a.get(github[:login]) do |page|
   end.submit
 end
 
-a.get(github[:notifications]).search(".unread a.body").each do |link|
+action = "get"
+selector = ".unread a.body"
+case ARGV.to_s
+when "delete"
+  #set action to delete
+  action = "delete"
+when "wipe"
+  action = "delete"
+  selector = "a.body"
+end
+
+a.get(github[:notifications]).search(selector).each do |link|
   puts "doing  #{link.text}"
   url = "https://github.com"+link.get_attribute('href')
   a.send(action, url)
