@@ -37,24 +37,3 @@ a.get(github[:notifications]).search(".unread a.body").each do |link|
   url = "https://github.com"+link.get_attribute('href')
   a.send(action, url)
 end
-
-# a.get(https://github.com/inbox/notifications).search(".unread a.body").each do |link|
-#   puts link.get_attribute('href')
-# end
-
-
-# if (config[:delete] == true)
-# 
-#   a.delete('https://github.com/inbox/3744503') do |page|
-#     puts 'done'
-#   end
-# 
-# else
-# 
-#   a.get('https://github.com/inbox/3744503') do |page|
-#     puts 'done'
-#   end  
-# 
-# end
-
-
