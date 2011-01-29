@@ -1,0 +1,19 @@
+PATH
+  remote: .
+  specs:
+    github-shush (0.1.0)
+      simpleconsole
+
+GEM
+  specs:
+    rake (0.8.7)
+    redgreen (1.2.2)
+    simpleconsole (0.1.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  github-shush!
+  rake
+  redgreen
