@@ -46,4 +46,5 @@ a.get(github[:notifications]).search(selector).each do |link|
   puts "#{action}> #{link.text}"
   url = github[:base]+link.get_attribute('href')
   a.send(action, url)
+  sleep 0.5  
 end
