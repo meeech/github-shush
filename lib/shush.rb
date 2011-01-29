@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'mechanize'
+require 'simpleconsole'
 
 require '~/.github-shush-config.rb'
 
@@ -9,7 +10,7 @@ config = {
 
 github = {
   :login => 'https://github.com/login',
-  :notification => "https://github.com/inbox/notifications"
+  :notifications => "https://github.com/inbox/notifications"
 }
 
 # These containers are used for the matching. 
@@ -32,9 +33,8 @@ end
 
 # either mark as read, or delete
 action = config[:delete] ? "delete" : "get"
-
 a.get(github[:notifications]).search(".unread a.body").each do |link|
-  url = "https://github.com/"+link.get_attribute('href')
+  url = "https://github.com"+link.get_attribute('href')
   a.send(action, url)
 end
 
