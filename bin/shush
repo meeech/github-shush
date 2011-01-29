@@ -1,5 +1,3 @@
 #!/usr/bin/env ruby
 $:.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
 require "shush"
-
-# SimpleConsole::Application.run(ARGV, NirvController, NirvView)
