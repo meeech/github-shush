@@ -3,6 +3,14 @@ require 'mechanize'
 
 CONFIG_FILE = "#{ENV['HOME']}/.github-shush-config.rb"
 
+if("help" == ARGV.to_s) 
+  puts "shush : will mark all notifications to as read"
+  puts "shush delete : will delete all UNREAD notifications"
+  puts "shush wipe : will delete ALL notifications"
+  puts "visit https://github.com/meeech/github-shush"
+  exit  
+end
+
 unless File.exists? CONFIG_FILE
 
   CONFIG_SAMPLE_FILE = File.dirname(__FILE__)+"/config.sample.rb"
@@ -55,9 +63,6 @@ when "wipe"
   action = "delete"
   selector = "div.del a"
   puts 'delete all notifications...'
-
-when "init"
-  require 'init'
 end
 
 a.get(github[:notifications]).search(selector).each do |link|
