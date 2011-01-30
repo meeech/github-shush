@@ -9,7 +9,9 @@ You read your github notifications in email, but the badge still haunts the OCD 
 Usage
 -----
 
-Run `shush init` - this will create the file `~/.github-shush-config.rb`. You will need to go and edit that file. 
+`gem install github-shush`
+
+On first run, will create the file `~/.github-shush-config.rb`. You will need to go and edit that file. 
 
 **`shush`** : will mark all notifications to as read
 
