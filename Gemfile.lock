@@ -1,0 +1,19 @@
+PATH
+  remote: .
+  specs:
+    github-shush (0.2.0)
+      mechanize
+
+GEM
+  specs:
+    mechanize (1.0.0)
+      nokogiri (>= 1.2.1)
+    nokogiri (1.4.4)
+    rake (0.8.7)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  github-shush!
+  rake
