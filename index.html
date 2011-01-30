@@ -17,7 +17,7 @@ h1,h2,h3,h4 {
 h1 { font-size: 3.0em;}
 h2 { font-size: 2.4em; padding: 8px 0; }
 h3 { font-size: 2em; }
-p { font-size: 1.5em; font-family: 'Crimson Text','Times New Roman', serif; }
+p { font-size: 1.3em; font-family: 'Crimson Text','Times New Roman', serif; }
 
 #header h1 {
     font-family: 'Helvetica', sans-serif;
@@ -35,6 +35,11 @@ p { font-size: 1.5em; font-family: 'Crimson Text','Times New Roman', serif; }
     font-size: 1.6em;
     padding: 0 40px;
 }
+
+.addendum {
+    font-size: .7em;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -46,7 +51,7 @@ p { font-size: 1.5em; font-family: 'Crimson Text','Times New Roman', serif; }
 
 </head>
 <body>
-    <a href="https://github.com/meeech/github-shush"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://assets1.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85?repo=&url=http%3A%2F%2Fs3.amazonaws.com%2Fgithub%2Fribbons%2Fforkme_right_gray_6d6d6d.png&path=" alt="Fork me on GitHub"></a>
+    <a href="https://github.com/meeech/github-shush"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://assets1.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85?repo=&url=http%3A%2F%2Fs3.amazonaws.com%2Fgithub%2Fribbons%2Fforkme_right_gray_6d6d6d.png&path=" alt="Fork me on GitHub"></a>
 <div class="yui3-g">
     <div id="header" class="yui3-u-1">
         <h1>shush</h1>
@@ -58,41 +63,50 @@ p { font-size: 1.5em; font-family: 'Crimson Text','Times New Roman', serif; }
                 You read your github notifications in email, but the badge still haunts the 
                 OCD elf in you: <img style="vertical-align: bottom" src="img/badge.png" width="110" height="30" alt="notification count example">
             </p> 
-            <p>shush is a simple tool to which will go and mark them all as read (or delete).</p>
-            <p><pre>gem install github-shush</pre></p>
+            <p>shush is a simple tool which will go and mark all your notifications as read (or delete).</p>
 
             <h2 id="usage">Usage</h2>
+            <p><pre>gem install github-shush</pre></p>
 
-            <p>Run <code>shush init</code> - this will create the file <code>~/.github-shush-config.rb</code>. You will need to go and edit that file. </p>
+            <p><pre><strong>shush</strong> : mark all notifications to as read</pre></p>
 
-            <p><strong><code>shush</code></strong> : will mark all notifications to as read</p>
+            <p><pre><strong>shush delete</strong> : delete all UNREAD notifications</pre></p>
 
-            <p><strong><code>shush delete</code></strong> : will delete all UNREAD notifications</p>
+            <p><pre><strong>shush wipe</strong> : delete ALL notifications</pre></p>
 
-            <p><strong><code>shush wipe</code></strong> : will delete ALL notifications</p>
-
+            <h2>Other stuff to know</h2>
             <p>shush is pretty basic - ie: no paginating, so if you have a ton of notifications to delete, you will want to just run it multiple times. </p>
-
-            <p>Feedback, forks and comments always welcome.</p>
-
-            <h2 id="background">Background</h2>
-
-            <p>&#8220;wondering if its possible to make gmail tool which deletes message notification on github if you&#8217;ve deleted the related email.&#8221; <a href="http://twitter.com/#!/meeech/status/30483727884750848">tweet</a></p>
-
-            <p>The answer is yes and no. In the end, my use case was satisfied with this gem I can trigger from the cli. You can hook it up to gmail, fairly simply -  I will outline how below if you interested in taking it to the next level.</p>
-
-            <p>re: gmail connection</p>
-
-            <p>Originally, I thought I could make a Component for Gmail that would add a button when it saw the message was a notification from Github. Turns out components are for Gmail for your domain only (I wish that had been clearer :) ). So, the next best solution would be to use chrome/safari extension, or a greasemonkey script. </p>
-
-            <p>Basic Imagined Flow:</p>
-
-            <p><code>User Clicks on Archive + Mark as Read on Github &gt;&gt; pings github-shush running on a localhost:9999 &gt;&gt; github-shush then does some subject/text matching, marks the relevant message as read.</code></p>
-
-            <p>Obviously, you could deploy to heroku, but the gem needs your github creds, and I have no interest in making a system where I&#8217;m responsible for storing your gh creds. Which is why I figured just running the gem on localhost.</p>
-
-            <p>But for me, my itch is scratched. </p>
+            <p>hope this helps others.</p>
+            <p>feedback, <a href="https://github.com/meeech/github-shush">forks</a> and <a href="http://twitter.com/#!/meeech" title="">tweets</a> always welcome.</p>
             
+            <!-- this space left intentionally blank -->
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+            
+            <div class="addendum">
+                <h2 id="background">Background</h2>
+
+                <p><em>&#8220;wondering if its possible to make gmail tool which deletes message notification on github if you&#8217;ve deleted the related email.&#8221;</em> <a href="http://twitter.com/#!/meeech/status/30483727884750848">tweet</a></p>
+
+                <p>The answer is yes</p> 
+                
+                <p>Although, in the end, my use case was satisfied with this gem I can trigger from the cli. You can hook it up to gmail - fairly simply -  I will outline how below if you interested in taking it to the next level.</p>
+
+                <p>re: gmail connection</p>
+
+                <p>Originally, I thought I could make a Component for Gmail that would add a button when it saw the message was a notification from Github. Turns out components are for Gmail for your domain only (I wish that had been clearer :) ). So, the next best solution would be to use chrome/safari extension, or a greasemonkey script. </p>
+
+                <p>Basic Imagined Flow:</p>
+                <p><pre>
+&gt;&gt; User Clicks on generated button: "Archive + Mark as Read on Github"
+&gt;&gt; pings github-shush running on a localhost:9999 
+&gt;&gt; github-shush then does some subject/text matching, marks the relevant message as read.
+                </pre></p>
+
+                <p>Obviously, you could deploy to Heroku, but the gem needs your github creds, and I have no interest in making a system where I&#8217;m responsible for storing your gh creds. Which is why I figured just running the gem on localhost.</p>
+
+                <p>But for me, my itch is scratched. :) </p>
+            </div>
         </div>
     </div>
 </div>
