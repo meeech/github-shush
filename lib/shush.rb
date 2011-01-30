@@ -4,10 +4,10 @@ require 'mechanize'
 CONFIG_FILE = "#{ENV['HOME']}/.github-shush-config.rb"
 
 if("help" == ARGV.to_s) 
-  puts "shush : will mark all notifications to as read"
+  puts "\nshush : will mark all notifications to as read"
   puts "shush delete : will delete all UNREAD notifications"
   puts "shush wipe : will delete ALL notifications"
-  puts "visit https://github.com/meeech/github-shush"
+  puts "\nvisit https://github.com/meeech/github-shush"
   exit  
 end
 
