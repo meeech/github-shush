@@ -38,5 +38,5 @@ Basic Imagined Flow:
 
 Obviously, you could deploy to heroku, but the gem needs your github creds, and I have no interest in making a system where I'm responsible for storing your gh creds. Which is why I figured just running the gem on localhost.
 
-But for me, here and now, this gem is enough. 
+But for me, my itch is scratched. 
 
