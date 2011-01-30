@@ -4,12 +4,12 @@ github-shush
 About
 -----
 
-You read your github notifications in email, but the badge still haunts the ocd elf in you when you are on the github site. shush is a simple gem which will go and mark them all as read.
+You read your github notifications in email, but the badge still haunts the OCD elf in you when you are on the github site. shush is a simple gem which will go and mark them all as read.
 
 Usage
 -----
 
-Run `shush init` - this will create the file `~/.github-shush-config.rb`
+Run `shush init` - this will create the file `~/.github-shush-config.rb`. You will need to go and edit that file. 
 
 **`shush`** : will mark all notifications to as read
 
@@ -17,17 +17,26 @@ Run `shush init` - this will create the file `~/.github-shush-config.rb`
 
 **`shush wipe`** : will delete ALL notifications
 
+shush is pretty basic - ie: no paginating, so if you have a ton of notifications to delete, you will want to just run it multiple times. 
+
+Feedback, forks and comments always welcome.
 
 Background
 ----------
 
-The idea here was that this gem would run, say on heroku, and a gmail component would look for mail from github. So when you read it in gmail, you would have an Archive & Mark as Read in Github type button.
+"wondering if its possible to make gmail tool which deletes message notification on github if you've deleted the related email." [tweet](http://twitter.com/#!/meeech/status/30483727884750848)
 
-Turns out components are for gmail for your domain only. I wish that had been clearer :) Anyhoo, in the big picture, 90% of the time i have my terminal open, so a simple command is just as good. 
+The answer is yes and no. In the end, my use case was satisfied with this gem I can trigger from the cli. You can hook it up to gmail, fairly simply -  I will outline how below if you interested in taking it to the next level.
 
-You could wire up the gmail portion I described using chrome/safari extension, or greasemonkey script. Could even have it hit localhost - easier than making something where you have to take care of someone elses gh username/pw. 
+re: gmail connection
+
+Originally, I thought I could make a Component for Gmail that would add a button when it saw the message was a notification from Github. Turns out components are for Gmail for your domain only (I wish that had been clearer :) ). So, the next best solution would be to use chrome/safari extension, or a greasemonkey script. 
+
+Basic Imagined Flow:
+
+`User Clicks on Archive + Mark as Read on Github >> pings github-shush running on a localhost:9999 >> github-shush then does some subject/text matching, marks the relevant message as read.`
+
+Obviously, you could deploy to heroku, but the gem needs your github creds, and I have no interest in making a system where I'm responsible for storing your gh creds. Which is why I figured just running the gem on localhost.
 
 But for me, here and now, this gem is enough. 
 
-
-* .github-shush-config.rb should live in your ~ directory. Put your github uname/pw in there
