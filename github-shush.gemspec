@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.authors           = ["meeech"]
   s.email             = ["mitchell.amihod@gmail.com"]
-  s.homepage          = "https://github.com/meeech/github-shush"
+  s.homepage          = "http://meeech.github.com/github-shush/"
   s.summary           = "Easy way to mark all as read / or delete github notifications."
   s.description       = "Was driving me nuts always seeing the github notifications badge, after I read it in email."
   s.rubyforge_project = s.name
