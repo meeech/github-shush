@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name              = "github-shush"
-  s.version           = "0.2.0"
+  s.version           = "0.2.1"
   s.platform          = Gem::Platform::RUBY
   s.authors           = ["meeech"]
   s.email             = ["mitchell.amihod@gmail.com"]
