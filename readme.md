@@ -1,6 +1,8 @@
 github-shush
 ============
 
+*** NO LONGER NEEDED *** Github has improved notifications. 
+
 About
 -----
 
